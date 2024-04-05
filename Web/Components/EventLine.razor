@@ -25,10 +25,11 @@
 
 @code {
     [Parameter]
-    public EventViewModel EventViewModel { get; set; }
+    public ListEventViewModel EventViewModel { get; set; }
 
-    public void OnConfirmed(EventViewModel model)
+    public void OnConfirmed(ListEventViewModel model)
     {
+        EventViewModel = model;
         StateHasChanged();
     }
 }
