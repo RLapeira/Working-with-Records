@@ -30,6 +30,7 @@ else
 
     public async void OnCancelClick()
     {
+        await OnConfirmed.InvokeAsync(Event);
         Editing = false;
     }
 
