@@ -4,22 +4,15 @@ namespace CursoRecords
 {
     class Program
     {
-        static void PrintCourse(Course course)
-        {
-            Console.WriteLine(course.Name);
-        }
         static void Main(string[] args)
         {
             var pluralsightCourse = new Course();
             pluralsightCourse.Name = "Working with C# Records";
-            pluralsightCourse.Author = "roland Guijt";
+            pluralsightCourse.Author = "Roland Guijt";
 
-            PrintCourse(pluralsightCourse);
-
-            var anotherCourse = pluralsightCourse;
-
-            Console.WriteLine(pluralsightCourse.Name);
-            Console.WriteLine(anotherCourse.Name);
+            var classroomCourse = new CourseRecord(
+                "Working with C# Records",
+                "Roland Guijt");
         }
     }
 
@@ -28,4 +21,6 @@ namespace CursoRecords
         public string Name { get; set; }
         public string Author { get; set; }
     }
+
+    public record CourseRecord(string Name, string Author);
 }
