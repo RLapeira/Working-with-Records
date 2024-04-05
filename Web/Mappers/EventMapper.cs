@@ -7,7 +7,10 @@ namespace Web.Mappers
     {
         public LisEventViewModel ConvertDtoToViewModel(EventDto dto)
         {
-            return new LisEventViewModel(dto.Id, dto.Date, dto.Name, dto.EventType, dto.Venue, dto.Capacity, dto.Sold);
+            // return new LisEventViewModel(dto.Id, dto.Date, dto.Name, dto.EventType, dto.Venue, dto.Capacity, dto.Sold);
+            var (id, date, name, eventType, venue, capacity, sold) = dto;
+            return new LisEventViewModel(id, date, name, eventType, venue, capacity, sold);
+            // son equivalentes
         }
 
         public void CopyBaseProperties(EventViewModel source, EventViewModel destination)
