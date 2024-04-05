@@ -13,7 +13,13 @@ namespace ClassesAndRecords
                 Duration: 90
             );
 
-            Console.WriteLine(classroomCourse);
+            CourseRecord videoCourse = new TimedCourseRecord(
+                "Working with C# Records",
+                "John Doe",
+                Duration: 90
+            );
+
+            Console.WriteLine(classroomCourse == videoCourse);
         }
 
         public record CourseRecord(string Name, string Author)
@@ -25,6 +31,16 @@ namespace ClassesAndRecords
             : CourseRecord(Name, Author)
         {
             public string Venue { get; init; }
+
+            public virtual bool Equals(TimedCourseRecord other)
+            {
+                return Name == other.Name;
+            }
+
+            public override int GetHashCode()
+            {
+                return Name.GetHashCode();
+            }
 
             //public override string ToString()
             //{
@@ -51,5 +67,7 @@ namespace ClassesAndRecords
             }
         }
 
+        public record AnotherTimedCourseRecord(string Name, string Author, int Duration)
+            : TimedCourseRecord(Name, Author, Duration);
     }
 }
