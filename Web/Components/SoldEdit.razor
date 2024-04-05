@@ -3,7 +3,7 @@
 {
 <div>
     <input id="sold" type="number" @bind="sold" @bind:event="oninput" placeholder="Enter sold" class="soldInput" />
-    <a class="btn-primary" type="button" @onclick="OnConfirmClick">CONFIRM @Event.Sold</a>
+    <a class="btn-primary" type="button" @onclick="OnConfirmClick">CONFIRM @sold</a>
     <a class="btn-primary" type="button" @onclick="OnCancelClick">X</a>
 </div>
 }
@@ -49,7 +49,8 @@ else
 
     public async void OnConfirmClick()
     {
-        await OnConfirmed.InvokeAsync(Event);
+        var clonedEventViewModel = eventViewModel with { Sold = sold };
+        await OnConfirmed.InvokeAsync(clonedEventViewModel);
         Editing = false;
     }
 }
